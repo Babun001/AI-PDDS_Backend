@@ -1,0 +1,12 @@
+{
+  "name": "aipdds_backend",
+  "version": "1.0.0",
+  "description": "This the backend of ai powered disease diagnosis services",
+  "main": "Server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Babun Roy",
+  "license": "ISC"
+}
