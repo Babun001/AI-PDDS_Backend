@@ -26,7 +26,7 @@ def Diabetes_prediction():
     DiabetesPedigreeFunction = request.args.get('DiabetesPedigreeFunction')
     Age = request.args.get('Age')
     predicted_value = model.predict([[Pregnancies,Glucose,BloodPressure,Insulin,BMI,DiabetesPedigreeFunction,Age]])
-    return predicted_value
+    return str(predicted_value)
 
 
 
