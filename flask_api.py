@@ -16,7 +16,7 @@ def welcome():
     return ("Welcome all!")
 
 
-@app.route('/diabetes', methods=['GET'])
+@app.route('/diabetes')
 def Diabetes_prediction():
     Pregnancies = request.args.get('Pregnancies')
     Glucose = request.args.get('Glucose')
