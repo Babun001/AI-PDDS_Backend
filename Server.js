@@ -14,16 +14,15 @@ App.get("/", (req, res) => {
 App.get("/api/db", (req, res) => {
     const queryParams = req.query;
     console.log(queryParams);
-    // res.send(queryParams);
 
     const URL = (`http://127.0.0.1:5000/diabetes?${new URLSearchParams(queryParams).toString()}`);
     // console.log(`The URL you get =>>>`,URL);
     request(URL, (err, response, body) => {
         if (err) {
             console.error("Error: ", err);
-            res.status(500).send("Error occurred while fetching data from the diabetes API.");
+            res.status(500).send("Error occurred while fetching data from flask API.");
         } else {
-            console.log("Body: ", body);
+            // console.log("Body: ", body);
             res.send(body);
         }
     });
