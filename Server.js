@@ -6,10 +6,6 @@ const App = express()
 
 App.use(cors({ origin: '*' }))
 
-App.get("/", (req, res) => {
-    res.send("This is the first api you visit!");
-});
-
 
 App.get("/api/db", (req, res) => {
     const queryParams = req.query;
