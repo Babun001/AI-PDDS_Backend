@@ -6,10 +6,10 @@ import pickle
 
 
 app = Flask(__name__)
-pickle_in_diabetes = open("./AIPDDS_Backend/Models/Diabetes.pkl","rb")
+pickle_in_diabetes = open("./Models/Diabetes.pkl","rb")
 model = pickle.load(pickle_in_diabetes)
 
-pickle_in_liver = open("./AIPDDS_Backend/Models/Liver_rf_babun.pkl","rb")
+pickle_in_liver = open("./Models/Liver_rf_babun.pkl","rb")
 liver_model = pickle.load(pickle_in_liver)
 
 
@@ -33,7 +33,7 @@ def liver_prediction():
     Total_Bilirubin = request.args.get('Total_Bilirubin')
     Alamine_Aminotransferase = request.args.get('Alamine_Aminotransferase')
     Aspartate_Aminotransferase = request.args.get('Aspartate_Aminotransferase')
-    Total_Protines = request.args.get('Total_Protines')
+    Total_Proteins = request.args.get('Total_Proteins')
     Albumin = request.args.get('Albumin')
     Albumin_and_Globulin_Ratio  = request.args.get('Albumin_and_Globulin_Ratio')
     
@@ -43,7 +43,7 @@ def liver_prediction():
         Total_Bilirubin,
         Alamine_Aminotransferase,
         Aspartate_Aminotransferase,
-        Total_Protines,
+        Total_Proteins,
         Albumin,
         Albumin_and_Globulin_Ratio        
     ]])
@@ -51,4 +51,4 @@ def liver_prediction():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(port=5000, debug=True)
