@@ -1,18 +1,25 @@
 {
   "name": "aipdds_backend",
   "version": "1.0.0",
-  "description": "This the backend of ai powered disease diagnosis services",
-  "main": "Server.js",
+  "description": "This is the server of aipdds application",
+  "main": "index.ts",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "dev": "tsc",
+    "start": "npm run dev && nodemon ./dist/index.js"
   },
   "author": "Babun Roy",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.8",
+    "@types/cors": "^2.8.17",
+    "@types/dotenv": "^8.2.3",
+    "@types/express": "^5.0.0",
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
-    "express": "^4.19.2",
-    "nodemon": "^3.1.4",
-    "request": "^2.88.2"
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2"
   }
 }
