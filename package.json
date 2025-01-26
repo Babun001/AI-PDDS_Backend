@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "This is the server of aipdds application",
   "main": "index.ts",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "dev": "tsc",
     "start": "npm run dev && nodemon ./dist/index.js"
