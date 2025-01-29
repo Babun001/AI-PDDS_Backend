@@ -14,6 +14,8 @@ app.use(express.json());
 
 app.use(express.static("public"))
 
+app.use(express.urlencoded({ extended: true }));
+
 import apiRoute from './routes/disease.routes';
 
 app.use('/diabetes/api/v1',apiRoute);
