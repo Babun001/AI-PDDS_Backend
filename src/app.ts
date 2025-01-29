@@ -14,5 +14,10 @@ app.use(express.json());
 
 app.use(express.static("public"))
 
+import apiRoute from './routes/disease.routes';
+
+app.use('/diabetes/api/v1',apiRoute);
+// app.use('/')
+
 export default app;
 

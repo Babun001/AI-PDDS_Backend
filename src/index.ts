@@ -14,4 +14,3 @@ try {
     console.error("Server failed "+ error);
     process.exit(1);
 }
-console.log(process.env.PORT);

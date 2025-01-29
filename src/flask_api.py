@@ -1,6 +1,6 @@
 # created on 26/07/2024 by babun
 
-from flask import Flask, request
+from flask import Flask, request, jsonify
 import pickle
 
 
@@ -32,75 +32,92 @@ lung_model = pickle.load(pickle_in_lung)
 
 @app.route('/diabetes')
 def Diabetes_prediction():
-    Pregnancies = request.args.get('Pregnancies')
-    Glucose = request.args.get('Glucose')
-    BloodPressure = request.args.get('BloodPressure')
-    Insulin = request.args.get('Insulin')
-    BMI = request.args.get('BMI')
-    DiabetesPedigreeFunction = request.args.get('DiabetesPedigreeFunction')
-    Age = request.args.get('Age')
-    predicted_value = model.predict([[Pregnancies,Glucose,BloodPressure,Insulin,BMI,DiabetesPedigreeFunction,Age]])
-    return str(predicted_value)
-
+    print("api called")
+    try:
+        Pregnancies = request.args.get('Pregnancies')
+        Glucose = request.args.get('Glucose')
+        BloodPressure = request.args.get('BloodPressure')
+        Insulin = request.args.get('Insulin')
+        BMI = request.args.get('BMI')
+        DiabetesPedigreeFunction = request.args.get('DiabetesPedigreeFunction')
+        Age = request.args.get('Age')
+        predicted_value = model.predict([[Pregnancies,Glucose,BloodPressure,Insulin,BMI,DiabetesPedigreeFunction,Age]])
+        return jsonify({'patientData': str(predicted_value)})
+    except Exception  as e:
+        return jsonify({"error": str(e), "status": "failed"})
 
 @app.route('/liver')
 def liver_prediction():
-    Age  = request.args.get('Age')
-    Gender = request.args.get('Gender')
-    Total_Bilirubin = request.args.get('Total_Bilirubin')
-    Alamine_Aminotransferase = request.args.get('Alamine_Aminotransferase')
-    Aspartate_Aminotransferase = request.args.get('Aspartate_Aminotransferase')
-    Total_Proteins = request.args.get('Total_Proteins')
-    Albumin = request.args.get('Albumin')
-    Albumin_and_Globulin_Ratio  = request.args.get('Albumin_and_Globulin_Ratio')
+    try:
+        Age  = request.args.get('Age')
+        Gender = request.args.get('Gender')
+        Total_Bilirubin = request.args.get('Total_Bilirubin')
+        Alamine_Aminotransferase = request.args.get('Alamine_Aminotransferase')
+        Aspartate_Aminotransferase = request.args.get('Aspartate_Aminotransferase')
+        Total_Proteins = request.args.get('Total_Proteins')
+        Albumin = request.args.get('Albumin')
+        Albumin_and_Globulin_Ratio  = request.args.get('Albumin_and_Globulin_Ratio')
     
-    liver_predicted_value = liver_model.predict([[
-        Age ,
-        Gender,
-        Total_Bilirubin,
-        Alamine_Aminotransferase,
-        Aspartate_Aminotransferase,
-        Total_Proteins,
-        Albumin,
-        Albumin_and_Globulin_Ratio        
-    ]])
-    return str(liver_predicted_value)
+        liver_predicted_value = liver_model.predict([[
+            Age ,
+            Gender,
+            Total_Bilirubin,
+            Alamine_Aminotransferase,
+            Aspartate_Aminotransferase,
+            Total_Proteins,
+            Albumin,
+            Albumin_and_Globulin_Ratio        
+            ]])
+        return jsonify({"patientData":str(liver_predicted_value)})
 
-@app.route('/kidney')
+    except Exception as e:
+        return jsonify({"error": str(e), "status": "failed"})
+
+@app    .route('/kidney')
 def kidney_prediction():
-    age = request.args.get('age')                     
-    blood_pressure = request.args.get('blood_pressure')          
-    specific_gravity = request.args.get('specific_gravity')        
-    albumin = request.args.get('albumin')                 
-    sugar = request.args.get('sugar')                   
-    blood_glucose_random = request.args.get('blood_glucose_random')    
-    blood_urea = request.args.get('blood_urea')              
-    serum_creatinine = request.args.get('serum_creatinine')        
-    sodium = request.args.get('sodium')                  
-    potassium = request.args.get('potassium')               
-    haemoglobin = request.args.get('haemoglobin')             
-    packed_cell_volume = request.args.get('packed_cell_volume')      
-    white_blood_cell_count = request.args.get('white_blood_cell_count')  
-    red_blood_cell_count = request.args.get('red_blood_cell_count')  
-    
-    kidney_predicted_value =   kidney_model.predict([[
-        age,
-        blood_pressure,
-        specific_gravity,
-        albumin,
-        sugar,
-        blood_glucose_random,
-        blood_urea,
-        serum_creatinine,
-        sodium,
-        potassium,
-        haemoglobin,
-        packed_cell_volume,
-        white_blood_cell_count,
-        red_blood_cell_count
-    ]])
+    try:
+        age = request.args.get('age')                     
+        blood_pressure = request.args.get('blood_pressure')          
+        specific_gravity = request.args.get('specific_gravity')        
+        albumin = request.args.get('albumin')                 
+        sugar = request.args.get('sugar')                   
+        blood_glucose_random = request.args.get('blood_glucose_random')    
+        blood_urea = request.args.get('blood_urea')              
+        serum_creatinine = request.args.get('serum_creatinine')        
+        sodium = request.args.get('sodium')                  
+        potassium = request.args.get('potassium')               
+        haemoglobin = request.args.get('haemoglobin')             
+        packed_cell_volume = request.args.get('packed_cell_volume')      
+        white_blood_cell_count = request.args.get('white_blood_cell_count')  
+        red_blood_cell_count = request.args.get('red_blood_cell_count')  
+
+        kidney_predicted_value =   kidney_model.predict([[
+            age,
+            blood_pressure,
+            specific_gravity,
+            albumin,
+            sugar,
+            blood_glucose_random,
+            blood_urea,
+            serum_creatinine,
+            sodium,
+            potassium,
+            haemoglobin,
+            packed_cell_volume,
+            white_blood_cell_count,
+            red_blood_cell_count
+        ]])
+        
+        return jsonify({
+            "patientData": str(kidney_predicted_value)
+        })
+        
+    except Exception as e:
+        return jsonify({"error": str(e), "status": "failed"})
     
 
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
+    
+# the api is http://127.0.0.1:5000/*
