@@ -12,6 +12,6 @@ router.route("/liver-Detection").post(liverController);
 router.route("/kidney-Detection").post();
 router.route("/parkinson-Detection").post();
 router.route("/breast-Detection").post();
-router.route("/").post();
+// router.route("/").post();
 
 export default router;
