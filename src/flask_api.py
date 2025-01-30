@@ -80,6 +80,12 @@ def heart():
 
 
 
+### lung module
+from DiseaseModules.lung import lung_prediction
+@app.route("/lung", methods=["post"])
+def lung():
+    return lung_prediction(lung_model)
+
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
