@@ -62,7 +62,24 @@ def parkinson():
     return Parkinson_Prediction(parkinsons_model)
 
 
-# @app.route
+
+
+
+### breast module
+from DiseaseModules.breast import breast_Prediction
+@app.route('/breast', methods=["post"])
+def breast():
+    return breast_Prediction(breast_model)
+
+
+###  heart module
+from DiseaseModules.heart import heart_prediction
+@app.route("/heart", methods=["post"])
+def heart():
+    return heart_prediction(heart_model)
+
+
+
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
