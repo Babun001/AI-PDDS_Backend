@@ -29,103 +29,40 @@ pickle_in_lung = open("./Models/lungCancer-lr.pkl", "rb")
 lung_model = pickle.load(pickle_in_lung)
 
 
-
+### diabetes module
+from DiseaseModules.diabetes import Diabetes_prediction
 @app.route('/diabetes', methods=["post"])
-def Diabetes_prediction():
-    try:
-        data = request.get_json()
-        if not data:
-            return jsonify({
-                "error": "No such json file found!", "status" : "failed"
-            })
-        
-        Pregnancies = data.get('Pregnancies')
-        Glucose = data.get('Glucose')
-        BloodPressure = data.get('BloodPressure')
-        Insulin = data.get('Insulin')
-        BMI = data.get('BMI')
-        DiabetesPedigreeFunction = data.get('DiabetesPedigreeFunction')
-        Age = data.get('Age')
-        print("-------------------------------------------------------------------------------------------")
-        print([Pregnancies,Glucose,BloodPressure,Insulin,BMI,DiabetesPedigreeFunction,Age])
-        predicted_value = model.predict([[float(Pregnancies),float(Glucose),float(BloodPressure),float(Insulin),float(BMI),float(DiabetesPedigreeFunction),float(Age)]])
-        print(predicted_value)
-        
-        return jsonify({'patientData': str(predicted_value)})
+def diabetes():
+    return Diabetes_prediction(model)
+
+
+
+### liver module
+from DiseaseModules.liver_prediction import liver_prediction
+@app.route('/liver', methods=["post"])
+def liver():
+    return liver_prediction(liver_model)
     
-    except Exception  as e:
-        return jsonify({"error": str(e), "status": "failed"})
-
-@app.route('/liver')
-def liver_prediction():
-    try:
-        Age  = request.args.get('Age')
-        Gender = request.args.get('Gender')
-        Total_Bilirubin = request.args.get('Total_Bilirubin')
-        Alamine_Aminotransferase = request.args.get('Alamine_Aminotransferase')
-        Aspartate_Aminotransferase = request.args.get('Aspartate_Aminotransferase')
-        Total_Proteins = request.args.get('Total_Proteins')
-        Albumin = request.args.get('Albumin')
-        Albumin_and_Globulin_Ratio  = request.args.get('Albumin_and_Globulin_Ratio')
-    
-        liver_predicted_value = liver_model.predict([[
-            Age ,
-            Gender,
-            Total_Bilirubin,
-            Alamine_Aminotransferase,
-            Aspartate_Aminotransferase,
-            Total_Proteins,
-            Albumin,
-            Albumin_and_Globulin_Ratio        
-            ]])
-        return jsonify({"patientData":str(liver_predicted_value)})
-
-    except Exception as e:
-        return jsonify({"error": str(e), "status": "failed"})
-
-@app    .route('/kidney')
-def kidney_prediction():
-    try:
-        age = request.args.get('age')                     
-        blood_pressure = request.args.get('blood_pressure')          
-        specific_gravity = request.args.get('specific_gravity')        
-        albumin = request.args.get('albumin')                 
-        sugar = request.args.get('sugar')                   
-        blood_glucose_random = request.args.get('blood_glucose_random')    
-        blood_urea = request.args.get('blood_urea')              
-        serum_creatinine = request.args.get('serum_creatinine')        
-        sodium = request.args.get('sodium')                  
-        potassium = request.args.get('potassium')               
-        haemoglobin = request.args.get('haemoglobin')             
-        packed_cell_volume = request.args.get('packed_cell_volume')      
-        white_blood_cell_count = request.args.get('white_blood_cell_count')  
-        red_blood_cell_count = request.args.get('red_blood_cell_count')  
-
-        kidney_predicted_value =   kidney_model.predict([[
-            age,
-            blood_pressure,
-            specific_gravity,
-            albumin,
-            sugar,
-            blood_glucose_random,
-            blood_urea,
-            serum_creatinine,
-            sodium,
-            potassium,
-            haemoglobin,
-            packed_cell_volume,
-            white_blood_cell_count,
-            red_blood_cell_count
-        ]])
-        
-        return jsonify({
-            "patientData": str(kidney_predicted_value)
-        })
-        
-    except Exception as e:
-        return jsonify({"error": str(e), "status": "failed"})
     
 
+
+### kidney module
+from DiseaseModules.kidney import kidney_prediction
+@app.route('/kidney', methods=["post"])
+def kidney():
+    return kidney_prediction(kidney_model)
+
+
+
+
+### parkinson module  
+from DiseaseModules.parkinson import Parkinson_Prediction
+@app.route('/parkinson',methods=["post"])
+def parkinson():
+    return Parkinson_Prediction(parkinsons_model)
+
+
+# @app.route
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)

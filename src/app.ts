@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 
 import apiRoute from './routes/disease.routes';
 
-app.use('/diabetes/api/v1',apiRoute);
+app.use('/disease/api/v1',apiRoute);
 // app.use('/')
 
 export default app;
