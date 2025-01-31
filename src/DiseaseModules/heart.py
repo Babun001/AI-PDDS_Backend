@@ -9,18 +9,18 @@ def heart_prediction(heart_model):
                 "status" : "failed"
             }),404
         
-        Age  = data.get("Age"),
-        Sex  = data.get("Sex"),
-        ChestPainType  = data.get("ChestPainType"),
-        RestingBP  = data.get("RestingBP"),
-        Cholesterol  = data.get("Cholesterol"),
-        FastingBS  = data.get("FastingBS"),
-        RestingECG  = data.get("RestingECG"),
-        MaxHR  = data.get("MaxHR"),
-        ExerciseAngina  = data.get("ExerciseAngina"),
-        Oldpeak  = data.get("Oldpeak"),
-        ST_Slope  = data.get("ST_Slope"),
-        HeartDisease= data.get("HeartDisease"),
+        Age  = data.get("Age")
+        Sex  = data.get("Sex")
+        ChestPainType  = data.get("ChestPainType")
+        RestingBP  = data.get("RestingBP")
+        Cholesterol  = data.get("Cholesterol")
+        FastingBS  = data.get("FastingBS")
+        RestingECG  = data.get("RestingECG")
+        MaxHR  = data.get("MaxHR")
+        ExerciseAngina  = data.get("ExerciseAngina")
+        Oldpeak  = data.get("Oldpeak")
+        ST_Slope  = data.get("ST_Slope")
+        # HeartDisease= data.get("HeartDisease")
         
         print(
             Age,       
@@ -34,7 +34,8 @@ def heart_prediction(heart_model):
             ExerciseAngina,
             Oldpeak,
             ST_Slope,
-            HeartDisease)
+            # HeartDisease)
+        )
         
         heart_predicted_value = heart_model.predict([[
             
@@ -48,8 +49,7 @@ def heart_prediction(heart_model):
             float(MaxHR),
             float(ExerciseAngina),
             float(Oldpeak),
-            float(ST_Slope),
-            float(HeartDisease)
+            float(ST_Slope)
             
         ]])
         if not heart_predicted_value:

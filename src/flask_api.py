@@ -22,7 +22,7 @@ parkinsons_model = pickle.load(pickle_in_parkinson)
 pickle_in_breast = open("./Models/breastCancer-rf.pkl", "rb")
 breast_model = pickle.load(pickle_in_breast)
 
-pickle_in_heart = open("./Models/heartDisease-gbc.pkl", "rb")
+pickle_in_heart = open("./Models/heart-gbc-updated.pkl", "rb")
 heart_model = pickle.load(pickle_in_heart)
 
 pickle_in_lung = open("./Models/lungCancer-lr.pkl", "rb")

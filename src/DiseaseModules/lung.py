@@ -35,7 +35,7 @@ def lung_prediction(lung_model):
         Snoring = data.get("Snoring")
         
         print(
-            'Age',Age,
+            Age,
             Gender,
             Air_Pollution,
             Alcohol_use,
