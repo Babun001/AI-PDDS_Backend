@@ -22,9 +22,26 @@ def kidney_prediction(kidney_model):
         packed_cell_volume = data.get('packed_cell_volume')      
         white_blood_cell_count = data.get('white_blood_cell_count')  
         red_blood_cell_count = data.get('red_blood_cell_count')  
+        
+        print(
+age,
+blood_pressure,
+specific_gravity,
+albumin,
+sugar,
+blood_glucose_random,
+blood_urea,
+serum_creatinine,
+sodium,
+potassium,
+haemoglobin,
+packed_cell_volume,
+white_blood_cell_count,
+red_blood_cell_count),
 
         kidney_predicted_value =   kidney_model.predict([[
-            float(age),float(blood_pressure),
+            float(age),
+            float(blood_pressure),
             float(specific_gravity),
             float(albumin),
             float(sugar),

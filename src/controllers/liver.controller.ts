@@ -38,9 +38,6 @@ const liverController = asyncAwaitFunc(async (req, res) => {
             message:"Received Paitent data",
             data:response.data
         })
-        
-
-        res.status(201).json({ message: "data received" })
 
     } catch (error) {
         console.error("Error in LiverController:", error);
