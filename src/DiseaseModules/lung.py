@@ -10,32 +10,32 @@ def lung_prediction(lung_model):
             }),404
         
         
-        Age = data.get("Age"),
-        Gender = data.get("Gender"),
-        Air_Pollution = data.get("Air_Pollution"),
-        Alcohol_use = data.get("Alcohol_use"),
-        Dust_Allergy = data.get("Dust_Allergy"),
-        OccuPational_Hazards = data.get("OccuPational_Hazards"),
-        Genetic_Risk = data.get("Genetic_Risk"),
-        chronic_Lung_Disease = data.get("chronic_Lung_Disease"),
-        Balanced_Diet = data.get("Balanced_Diet"),
-        Obesity = data.get("Obesity"),
-        Smoking = data.get("Smoking"),
-        Passive_Smoker = data.get("Passive_Smoker"),
-        Chest_Pain = data.get("Chest_Pain"),
-        Coughing_of_Blood = data.get("Coughing_of_Blood"),
-        Fatigue = data.get("Fatigue"),
-        Weight_Loss = data.get("Weight_Loss"),
-        Shortness_of_Breath = data.get("Shortness_of_Breath"),
-        Wheezing = data.get("Wheezing"),
-        Swallowing_Difficulty = data.get("Swallowing_Difficulty"),
-        Clubbing_of_Finger_Nails = data.get("Clubbing_of_Finger_Nails"),
-        Frequent_Cold = data.get("Frequent_Cold"),
-        Dry_Cough = data.get("Dry_Cough"),
+        Age = data.get("Age")
+        Gender = data.get("Gender")
+        Air_Pollution = data.get("Air_Pollution")
+        Alcohol_use = data.get("Alcohol_use")
+        Dust_Allergy = data.get("Dust_Allergy")
+        OccuPational_Hazards = data.get("OccuPational_Hazards")
+        Genetic_Risk = data.get("Genetic_Risk")
+        chronic_Lung_Disease = data.get("chronic_Lung_Disease")
+        Balanced_Diet = data.get("Balanced_Diet")
+        Obesity = data.get("Obesity")
+        Smoking = data.get("Smoking")
+        Passive_Smoker = data.get("Passive_Smoker")
+        Chest_Pain = data.get("Chest_Pain")
+        Coughing_of_Blood = data.get("Coughing_of_Blood")
+        Fatigue = data.get("Fatigue")
+        Weight_Loss = data.get("Weight_Loss")
+        Shortness_of_Breath = data.get("Shortness_of_Breath")
+        Wheezing = data.get("Wheezing")
+        Swallowing_Difficulty = data.get("Swallowing_Difficulty")
+        Clubbing_of_Finger_Nails = data.get("Clubbing_of_Finger_Nails")
+        Frequent_Cold = data.get("Frequent_Cold")
+        Dry_Cough = data.get("Dry_Cough")
         Snoring = data.get("Snoring")
         
         print(
-            Age,
+            'Age',Age,
             Gender,
             Air_Pollution,
             Alcohol_use,
@@ -57,7 +57,8 @@ def lung_prediction(lung_model):
             Clubbing_of_Finger_Nails,
             Frequent_Cold,
             Dry_Cough,
-            Snoring)
+            Snoring
+            )
 
 
         lung_predicted_value =   lung_model.predict([[
@@ -85,6 +86,8 @@ def lung_prediction(lung_model):
             float(Dry_Cough),
             float(Snoring)
         ]])
+        
+        print(str(lung_predicted_value))
         
         if not lung_predicted_value:
             return jsonify({"error":"Unable to predict lung disease!!","status":"failed"}),404
