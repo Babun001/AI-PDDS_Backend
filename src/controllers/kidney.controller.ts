@@ -10,6 +10,10 @@ const kidneyController = asyncAwaitFunc(async (req, res) => {
             specific_gravity,
             albumin,
             sugar,
+            red_blood_cells,
+            pus_cell,
+            pus_cell_clumps,
+            bacteria,
             blood_glucose_random,
             blood_urea,
             serum_creatinine,
@@ -18,58 +22,50 @@ const kidneyController = asyncAwaitFunc(async (req, res) => {
             haemoglobin,
             packed_cell_volume,
             white_blood_cell_count,
-            red_blood_cell_count
+            red_blood_cell_count,
+            hypertension,
+            diabetes_mellitus,
+            coronary_artery_disease,
+            appetite,
+            peda_edema,
+            aanemia
         } = req.body;
 
         const response = await axios.post('http://127.0.0.1:5000/kidney',
             {
-                age,
-                blood_pressure,
-                specific_gravity,
-                albumin,
-                sugar,
-                blood_glucose_random,
-                blood_urea,
-                serum_creatinine,
-                sodium,
-                potassium,
-                haemoglobin,
-                packed_cell_volume,
-                white_blood_cell_count,
-                red_blood_cell_count
+            age,
+            blood_pressure,
+            specific_gravity,
+            albumin,
+            sugar,
+            red_blood_cells,
+            pus_cell,
+            pus_cell_clumps,
+            bacteria,
+            blood_glucose_random,
+            blood_urea,
+            serum_creatinine,
+            sodium,
+            potassium,
+            haemoglobin,
+            packed_cell_volume,
+            white_blood_cell_count,
+            red_blood_cell_count,
+            hypertension,
+            diabetes_mellitus,
+            coronary_artery_disease,
+            appetite,
+            peda_edema,
+            aanemia
             },
             {
-                headers: { "Content-Type": "Application/json" }
+                headers: { "Content-Type": "application/json" }
             }
         )
 
         if (!response) {
             throw new apiError(404, "Unable to received data from kidney api!", "");
         }
-
-        // const response = new Promise(async (resolved, rejected) => {
-        //     await axios.post('http://127.0.0.1:5000/kidney',
-        //         {
-        //             age,
-        //             blood_pressure,
-        //             specific_gravity,
-        //             albumin,
-        //             sugar,
-        //             blood_glucose_random,
-        //             blood_urea,
-        //             serum_creatinine,
-        //             sodium,
-        //             potassium,
-        //             haemoglobin,
-        //             packed_cell_volume,
-        //             white_blood_cell_count,
-        //             red_blood_cell_count
-        //         },
-        //         {
-        //             headers: { "Content-Type": "Application/json" }
-        //         }
-        //     )
-        // })
 
         res.status(200).json({
             paitentData: response.data
