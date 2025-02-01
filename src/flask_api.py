@@ -16,7 +16,7 @@ liver_model = pickle.load(pickle_in_liver)
 pickle_in_kidney = open("./Models/ckd-rf-scaled.pkl", "rb")
 kidney_model = pickle.load(pickle_in_kidney)
 
-pickle_in_parkinson = open("./Models/parkinsons-rf.pkl", "rb")
+pickle_in_parkinson = open("./Models/parkinsons-rf-refresh.pkl", "rb")
 parkinsons_model = pickle.load(pickle_in_parkinson)
 
 pickle_in_breast = open("./Models/breastCancer-rf.pkl", "rb")
@@ -60,8 +60,6 @@ from DiseaseModules.parkinson import Parkinson_Prediction
 @app.route('/parkinson',methods=["post"])
 def parkinson():
     return Parkinson_Prediction(parkinsons_model)
-
-
 
 
 
