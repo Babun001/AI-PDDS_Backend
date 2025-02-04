@@ -13,22 +13,18 @@ const uploadImageToColudinary = async(localFilePath:string) =>{
         if(!localFilePath) return null;
         const response = await cloudinary.uploader.upload(localFilePath, {resource_type: 'auto'});
 
-        console.log(response);
+        // console.log(response);
 
         fs.unlinkSync(localFilePath)
-        console.log(`unlinkSync method deleted file successfully`);
+        // console.log(`unlinkSync method deleted file successfully`);
         
-        
+        return response;
 
-    } catch (error:any) {
-        console.error("Error in cloudinary module!! ", error.message || "");
-        fs.unlink(localFilePath, err =>{
-            if (err) {
-                console.error("Error deleting file:", err);
-            } else {
-                console.log("File deleted successfully!");
-            }
-        })
+    } catch (error) {
+        fs.unlink(localFilePath, (err) => {
+            if (err) console.error("Error deleting file after failed upload:", err);
+        });
+        return null;
     }
 }
 

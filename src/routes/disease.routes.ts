@@ -9,7 +9,7 @@ import lungController from "../controllers/lung.controller";
 import heartController from "../controllers/heart.controller";
 import parkinsonController from "../controllers/parkinson.controller";
 import breastController from "../controllers/breast.controller";
-// import imageUpload from "../controllers/imageUpload.controller";
+import imageUploader from "../controllers/imageUpload.controller";
 
 
 
@@ -25,7 +25,7 @@ router.route("/lung-Detection").post(lungController);
 router.route("/heart-Detection").post(heartController);
 
 
-// router.route("/image-upload").post(upload.single("Image"), imageUpload);
+router.route("/image-upload").post(upload.single("Image"), imageUploader);
 
 
 export default router;
