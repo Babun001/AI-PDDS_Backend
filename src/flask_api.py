@@ -2,10 +2,31 @@
 
 from flask import Flask, request, jsonify
 import pickle
+import requests
+import numpy as np
+import cv2
+import tensorflow as tf
 
 
 
 app = Flask(__name__)
+
+model = tf.keras.models.load_model("./Models/alzheimers-imb-cnn.h5")
+
+def preprocess_image(image):
+    """Preprocess the image for the ML model."""
+    # Adjust size based on model input shape
+    image = cv2.resize(image, (224, 224)) 
+    # Normalize 
+    image = image / 255.0  
+    # Add batch dimension
+    image = np.expand_dims(image, axis=0)  
+    return image
+
+
+
+
+
 
 ### load models 
 def load_Models(file_path):
