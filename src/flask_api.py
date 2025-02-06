@@ -21,6 +21,7 @@ models = {
     "breast_model" : load_Models("./Models/breastCancer-rf-recheck.pkl"),
     "heart_model" : load_Models("./Models/heart-gbc-updated.pkl"),
     "lung_model" : load_Models("./Models/lungCancer-lr.pkl"),
+    "stroke_model" : load_Models("./Models/stroke-rf.pkl")
 }
 
 
@@ -100,6 +101,14 @@ from DiseaseModules.lung import lung_prediction
 @app.route("/lung", methods=["post"])
 def lung():
     return lung_prediction(models["lung_model"])
+
+
+
+### stroke model
+from DiseaseModules.stroke import stroke_prediction
+@app.route("/stroke", methods=["post"])
+def stroke():
+    return stroke_prediction(models["stroke_model"])
 
 
 if __name__ == '__main__':

@@ -10,6 +10,7 @@ import heartController from "../controllers/heart.controller";
 import parkinsonController from "../controllers/parkinson.controller";
 import breastController from "../controllers/breast.controller";
 import imageUploader from "../controllers/imageUpload.controller";
+import strokeController from "../controllers/stroke.controller"
 
 
 
@@ -23,6 +24,7 @@ router.route("/parkinson-Detection").post(parkinsonController);
 router.route("/breast-Detection").post(breastController);
 router.route("/lung-Detection").post(lungController);
 router.route("/heart-Detection").post(heartController);
+router.route("/stroke-Controller").post(strokeController);
 
 
 router.route("/image-upload").post(upload.single("Image"), imageUploader);
