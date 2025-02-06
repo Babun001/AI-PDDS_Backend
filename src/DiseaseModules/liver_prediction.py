@@ -15,7 +15,7 @@ def liver_prediction(liver_model):
         Albumin = data.get('Albumin')
         Albumin_and_Globulin_Ratio  = data.get('Albumin_and_Globulin_Ratio')
         
-        print(Age,Gender,Total_Bilirubin,Alamine_Aminotransferase,Aspartate_Aminotransferase,Total_Proteins,Albumin,Albumin_and_Globulin_Ratio)
+        # print(Age,Gender,Total_Bilirubin,Alamine_Aminotransferase,Aspartate_Aminotransferase,Total_Proteins,Albumin,Albumin_and_Globulin_Ratio)
     
         liver_predicted_value = liver_model.predict([[
             float(Age) ,
@@ -28,7 +28,7 @@ def liver_prediction(liver_model):
             float(Albumin_and_Globulin_Ratio)        
             ]])
         
-        print(liver_predicted_value)
+        # print(liver_predicted_value)
         return jsonify({"patientData":str(liver_predicted_value)})
     except Exception as e:
         return jsonify({"error": str(e), "status": "failed"})

@@ -34,31 +34,31 @@ def lung_prediction(lung_model):
         Dry_Cough = data.get("Dry_Cough")
         Snoring = data.get("Snoring")
         
-        print(
-            Age,
-            Gender,
-            Air_Pollution,
-            Alcohol_use,
-            Dust_Allergy,
-            OccuPational_Hazards,
-            Genetic_Risk,
-            chronic_Lung_Disease,
-            Balanced_Diet,
-            Obesity,
-            Smoking,
-            Passive_Smoker,
-            Chest_Pain,
-            Coughing_of_Blood,
-            Fatigue,
-            Weight_Loss,
-            Shortness_of_Breath,
-            Wheezing,
-            Swallowing_Difficulty,
-            Clubbing_of_Finger_Nails,
-            Frequent_Cold,
-            Dry_Cough,
-            Snoring
-            )
+        # print(
+        #     Age,
+        #     Gender,
+        #     Air_Pollution,
+        #     Alcohol_use,
+        #     Dust_Allergy,
+        #     OccuPational_Hazards,
+        #     Genetic_Risk,
+        #     chronic_Lung_Disease,
+        #     Balanced_Diet,
+        #     Obesity,
+        #     Smoking,
+        #     Passive_Smoker,
+        #     Chest_Pain,
+        #     Coughing_of_Blood,
+        #     Fatigue,
+        #     Weight_Loss,
+        #     Shortness_of_Breath,
+        #     Wheezing,
+        #     Swallowing_Difficulty,
+        #     Clubbing_of_Finger_Nails,
+        #     Frequent_Cold,
+        #     Dry_Cough,
+        #     Snoring
+        #     )
 
 
         lung_predicted_value =   lung_model.predict([[
@@ -87,7 +87,7 @@ def lung_prediction(lung_model):
             float(Snoring)
         ]])
         
-        print(str(lung_predicted_value))
+        # print(str(lung_predicted_value))
         
         if not lung_predicted_value:
             return jsonify({"error":"Unable to predict lung disease!!","status":"failed"}),404

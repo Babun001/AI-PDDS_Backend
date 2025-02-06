@@ -9,7 +9,7 @@ def Parkinson_Prediction(parkinsons_model):
                 "status":"failed"
             }),402
                 
-        print(data)
+        # print(data)
             
         mdvp_fo_hz = data.get("mdvp_fo_hz")
         mdvp_fhi_hz = data.get("mdvp_fhi_hz")
@@ -35,30 +35,30 @@ def Parkinson_Prediction(parkinsons_model):
         ppe = data.get("ppe")
         
         
-        print(
-            mdvp_fo_hz,
-            mdvp_fhi_hz,
-            mdvp_flo_hz,
-            mdvp_jitter_in_percent,
-            mdvp_jitter_abs,
-            mdvp_rap,
-            mdvp_ppq,
-            jitter_ddp,
-            mdvp_shimmer,
-            mdvp_shimmer_db,
-            shimmer_apq3,
-            shimmer_apq5,
-            mdvp_apq,
-            shimmer_dda,
-            nhr,
-            hnr,
-            rpde,
-            dfa,
-            spread1,
-            spread2,
-            d2,
-            ppe
-        )
+        # print(
+        #     mdvp_fo_hz,
+        #     mdvp_fhi_hz,
+        #     mdvp_flo_hz,
+        #     mdvp_jitter_in_percent,
+        #     mdvp_jitter_abs,
+        #     mdvp_rap,
+        #     mdvp_ppq,
+        #     jitter_ddp,
+        #     mdvp_shimmer,
+        #     mdvp_shimmer_db,
+        #     shimmer_apq3,
+        #     shimmer_apq5,
+        #     mdvp_apq,
+        #     shimmer_dda,
+        #     nhr,
+        #     hnr,
+        #     rpde,
+        #     dfa,
+        #     spread1,
+        #     spread2,
+        #     d2,
+        #     ppe
+        # )
         
         parkinsonsPrediction = parkinsons_model.predict([[
         
@@ -87,7 +87,7 @@ def Parkinson_Prediction(parkinsons_model):
         
         ]])
         
-        print("Predicted value: ",parkinsonsPrediction)
+        # print("Predicted value: ",parkinsonsPrediction)
         
         if not parkinsonsPrediction:
             return jsonify({

@@ -35,32 +35,32 @@ def kidney_prediction(kidney_model):
         peda_edema = data.get("peda_edema")
         aanemia = data.get("aanemia")
         
-        print(
-age,
-blood_pressure,
-specific_gravity,
-albumin,
-sugar,
-red_blood_cells,
-pus_cell,
-pus_cell_clumps,
-bacteria,
-blood_glucose_random,
-blood_urea,
-serum_creatinine,
-sodium,
-potassium,
-haemoglobin,
-packed_cell_volume,
-white_blood_cell_count,
-red_blood_cell_count,
-hypertension,
-diabetes_mellitus,
-coronary_artery_disease,
-appetite,
-peda_edema,
-aanemia
-)
+#         print(
+# age,
+# blood_pressure,
+# specific_gravity,
+# albumin,
+# sugar,
+# red_blood_cells,
+# pus_cell,
+# pus_cell_clumps,
+# bacteria,
+# blood_glucose_random,
+# blood_urea,
+# serum_creatinine,
+# sodium,
+# potassium,
+# haemoglobin,
+# packed_cell_volume,
+# white_blood_cell_count,
+# red_blood_cell_count,
+# hypertension,
+# diabetes_mellitus,
+# coronary_artery_disease,
+# appetite,
+# peda_edema,
+# aanemia
+# )
 
         kidney_predicted_value =   kidney_model.predict([[
         float(age),

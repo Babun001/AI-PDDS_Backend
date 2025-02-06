@@ -15,10 +15,10 @@ def Diabetes_prediction(model):
         BMI = data.get('BMI')
         DiabetesPedigreeFunction = data.get('DiabetesPedigreeFunction')
         Age = data.get('Age')
-        print("-------------------------------------------------------------------------------------------")
-        print([Pregnancies,Glucose,BloodPressure,Insulin,BMI,DiabetesPedigreeFunction,Age])
+        # print("-------------------------------------------------------------------------------------------")
+        # print([Pregnancies,Glucose,BloodPressure,Insulin,BMI,DiabetesPedigreeFunction,Age])
         predicted_value = model.predict([[float(Pregnancies),float(Glucose),float(BloodPressure),float(Insulin),float(BMI),float(DiabetesPedigreeFunction),float(Age)]])
-        print(predicted_value)
+        # print(predicted_value)
         
         return jsonify({'patientData': str(predicted_value)})
     

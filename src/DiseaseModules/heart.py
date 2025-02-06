@@ -22,20 +22,20 @@ def heart_prediction(heart_model):
         ST_Slope  = data.get("ST_Slope")
         # HeartDisease= data.get("HeartDisease")
         
-        print(
-            Age,       
-            Sex,
-            ChestPainType,
-            RestingBP,
-            Cholesterol,
-            FastingBS,
-            RestingECG,
-            MaxHR,
-            ExerciseAngina,
-            Oldpeak,
-            ST_Slope,
-            # HeartDisease)
-        )
+        # print(
+        #     Age,       
+        #     Sex,
+        #     ChestPainType,
+        #     RestingBP,
+        #     Cholesterol,
+        #     FastingBS,
+        #     RestingECG,
+        #     MaxHR,
+        #     ExerciseAngina,
+        #     Oldpeak,
+        #     ST_Slope,
+        #     # HeartDisease)
+        # )
         
         heart_predicted_value = heart_model.predict([[
             
