@@ -7,33 +7,50 @@ import pickle
 
 app = Flask(__name__)
 
-pickle_in_diabetes = open("./Models/Diabetes.pkl","rb")
-model = pickle.load(pickle_in_diabetes)
+### load models 
+def load_Models(file_path):
+    with open(file_path, "rb") as f:
+        return pickle.load(f)
+    
 
-pickle_in_liver = open("./Models/Liver_rf_babun.pkl","rb")
-liver_model = pickle.load(pickle_in_liver)
+models = {
+    "diabetes_model" : load_Models("./Models/Diabetes.pkl"),
+    "liver_model" : load_Models("./Models/Liver_rf_babun.pkl"),
+    "kidney_model" : load_Models("./Models/ckd-rf-scaled.pkl"),
+    "parkinsons_model" : load_Models("./Models/parkinsons-rf-refresh.pkl"),
+    "breast_model" : load_Models("./Models/breastCancer-rf-recheck.pkl"),
+    "heart_model" : load_Models("./Models/heart-gbc-updated.pkl"),
+    "lung_model" : load_Models("./Models/lungCancer-lr.pkl"),
+}
 
-pickle_in_kidney = open("./Models/ckd-rf-scaled.pkl", "rb")
-kidney_model = pickle.load(pickle_in_kidney)
 
-pickle_in_parkinson = open("./Models/parkinsons-rf-refresh.pkl", "rb")
-parkinsons_model = pickle.load(pickle_in_parkinson)
+# pickle_in_diabetes = open("./Models/Diabetes.pkl","rb")
+# model = pickle.load(pickle_in_diabetes)
 
-pickle_in_breast = open("./Models/breastCancer-rf-recheck.pkl", "rb")
-breast_model = pickle.load(pickle_in_breast)
+# pickle_in_liver = open("./Models/Liver_rf_babun.pkl","rb")
+# liver_model = pickle.load(pickle_in_liver)
 
-pickle_in_heart = open("./Models/heart-gbc-updated.pkl", "rb")
-heart_model = pickle.load(pickle_in_heart)
+# pickle_in_kidney = open("./Models/ckd-rf-scaled.pkl", "rb")
+# kidney_model = pickle.load(pickle_in_kidney)
 
-pickle_in_lung = open("./Models/lungCancer-lr.pkl", "rb")
-lung_model = pickle.load(pickle_in_lung)
+# pickle_in_parkinson = open("./Models/parkinsons-rf-refresh.pkl", "rb")
+# parkinsons_model = pickle.load(pickle_in_parkinson)
+
+# pickle_in_breast = open("./Models/breastCancer-rf-recheck.pkl", "rb")
+# breast_model = pickle.load(pickle_in_breast)
+
+# pickle_in_heart = open("./Models/heart-gbc-updated.pkl", "rb")
+# heart_model = pickle.load(pickle_in_heart)
+
+# pickle_in_lung = open("./Models/lungCancer-lr.pkl", "rb")
+# lung_model = pickle.load(pickle_in_lung)
 
 
 ### diabetes module
 from DiseaseModules.diabetes import Diabetes_prediction
 @app.route('/diabetes', methods=["post"])
 def diabetes():
-    return Diabetes_prediction(model)
+    return Diabetes_prediction(models["diabetes_model"])
 
 
 
@@ -41,7 +58,7 @@ def diabetes():
 from DiseaseModules.liver_prediction import liver_prediction
 @app.route('/liver', methods=["post"])
 def liver():
-    return liver_prediction(liver_model)
+    return liver_prediction(models["liver_model"])
     
     
 
@@ -50,7 +67,7 @@ def liver():
 from DiseaseModules.kidney import kidney_prediction
 @app.route('/kidney', methods=["post"])
 def kidney():
-    return kidney_prediction(kidney_model)
+    return kidney_prediction(models["kidney_model"])
 
 
 
@@ -59,7 +76,7 @@ def kidney():
 from DiseaseModules.parkinson import Parkinson_Prediction
 @app.route('/parkinson',methods=["post"])
 def parkinson():
-    return Parkinson_Prediction(parkinsons_model)
+    return Parkinson_Prediction(models["parkinsons_model"])
 
 
 
@@ -67,14 +84,14 @@ def parkinson():
 from DiseaseModules.breast import breast_Prediction
 @app.route('/breast', methods=["post"])
 def breast():
-    return breast_Prediction(breast_model)
+    return breast_Prediction(models["breast_model"])
 
 
 ###  heart module
 from DiseaseModules.heart import heart_prediction
 @app.route("/heart", methods=["post"])
 def heart():
-    return heart_prediction(heart_model)
+    return heart_prediction(models["heart_model"])
 
 
 
@@ -82,7 +99,7 @@ def heart():
 from DiseaseModules.lung import lung_prediction
 @app.route("/lung", methods=["post"])
 def lung():
-    return lung_prediction(lung_model)
+    return lung_prediction(models["lung_model"])
 
 
 if __name__ == '__main__':

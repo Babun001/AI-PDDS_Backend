@@ -32,7 +32,7 @@ const liverController = asyncAwaitFunc(async (req, res) => {
             throw new apiError(404, "Response not found!!", "")
         }
 
-        console.log(response.data);
+        // console.log(response.data);
 
         res.status(200).json({
             message:"Received Paitent data",
