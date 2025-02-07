@@ -32,13 +32,23 @@ def alzheimer_prediction(alzheimer_model):
         image = cv2.imdecode(image, cv2.IMREAD_COLOR)
         
         processed_image = preprocess_image(image)
+        
+        
 
         prediction = alzheimer_model.predict(processed_image)
-        # predicted_class = np.argmax(prediction)
+        predicted_class = np.argmax(prediction)
         confidence = float(np.max(prediction))
+        
+        alzheimer_classes = {
+            0: "Mild Dementia",
+            1: "Moderate Dementia",
+            2: "Non-Demented",
+            3: "Very Mild Dementia"
+        }
+        disease_stage = alzheimer_classes.get(predicted_class, "Unknown")
 
         return jsonify({
-            "predicted_stage": prediction,
+            "predicted_stage": disease_stage,
             "confidence": confidence
         })
         
