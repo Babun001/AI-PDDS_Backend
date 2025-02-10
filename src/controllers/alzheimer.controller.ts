@@ -3,7 +3,7 @@ import uploadImageToCloudinary from "../utility/cloudinaryUpload.utility";
 import apiError from "../utility/apiError";
 import axios from "axios";
 
-const imageUploader = asyncAwaitFunc(async(req,res) =>{
+const alzheimer_controller = asyncAwaitFunc(async(req,res) =>{
     try {
         const fileName = req.file?.path;
 
@@ -36,4 +36,4 @@ const imageUploader = asyncAwaitFunc(async(req,res) =>{
     }
 })
 
-export default imageUploader;
+export default alzheimer_controller;

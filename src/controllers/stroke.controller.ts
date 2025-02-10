@@ -14,12 +14,12 @@ const stroke_controller = asyncAwaitFunc(async(req, res) =>{
             bmi
         } = req.body;
 
-        console.table([age,
-            hypertension,
-            heart_disease,
-            ever_married,
-            avg_glucose_level,
-            bmi])
+        // console.table([age,
+        //     hypertension,
+        //     heart_disease,
+        //     ever_married,
+        //     avg_glucose_level,
+        //     bmi])
 
         const response = await axios.post("http://127.0.0.1:5000/stroke",
             {
