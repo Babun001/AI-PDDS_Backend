@@ -11,13 +11,20 @@ app = Flask(__name__)
 
 
 imageBasedModels = {
-    "alzheimer_model": tf.keras.models.load_model("./Models/alzheimers-imb-cnn.h5", compile=False)
+    "alzheimer_model": tf.keras.models.load_model("./Models/alzheimers-imb-cnn.h5", compile=False),
+    "tuberculosis" : tf.keras.models.load_model("./Models/tb-cnn.h5", compile=False)
 }
 
 from DiseaseModules.alzheimer import alzheimer_prediction
 @app.route("/alzheimer", methods=["POST"])
 def alzheimer():
     return alzheimer_prediction(imageBasedModels["alzheimer_model"])
+
+
+from DiseaseModules.tuberculosis import tuberculosis_prediction
+@app.route("/tuberculosis", methods=["POST"])
+def tuberculosis () :
+    return tuberculosis_prediction(imageBasedModels["tuberculosis"])
     
     
 ### load models 

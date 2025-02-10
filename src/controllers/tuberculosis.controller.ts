@@ -17,12 +17,24 @@ const tuberculosis_controller = asyncAwaitFunc(async(req,res) =>{
             throw new apiError(400, "upload failed in cloudinary!", "");
         }
 
+        const cloudinaryImageLink = upload_to_cloudinary?.url || ""
 
+        if(!cloudinaryImageLink.startsWith("http")){
+            throw new apiError(400, "URL is not ready yet!!", "")
+        }
 
+        const response = await axios.post("http://127.0.0.1:5000/tuberculosis",
+            {
+                cloudinaryImageLink
+            },
 
-        console.log(upload_to_cloudinary?.url);
+            {
+                headers:{"Content-Type" : "application/json"}
+            }
+        )
+
         res.status(200).json({
-            message: "data received"
+            patientCondition : response.data
         })
         
     } catch (error:any) {
